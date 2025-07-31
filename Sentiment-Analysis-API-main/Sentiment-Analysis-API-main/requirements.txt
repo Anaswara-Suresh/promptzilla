@@ -1,0 +1,4 @@
+textblob
+fastapi
+uvicorn
+flask
