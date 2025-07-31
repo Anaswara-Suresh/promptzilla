@@ -9,7 +9,7 @@ from io import BytesIO
 import tempfile
 import google.generativeai as genai
 
-gemini_api_key = "gemini api"
+gemini_api_key = "AIzaSyBe34XDH5tiA1cqL5NgK5KhinJ-kNw35Z0"
 genai.configure(api_key=gemini_api_key)
 model = genai.GenerativeModel('gemini-2.5-pro')
 
