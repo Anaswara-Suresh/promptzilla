@@ -1,3 +1,8 @@
 fastapi
 uvicorn
-python-multipart
+pydantic
+requests
+pytesseract
+pillow
+PyMuPDF
+google-generativeai
