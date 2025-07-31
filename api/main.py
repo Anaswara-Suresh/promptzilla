@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request, Header, HTTPException
 from pydantic import BaseModel
 from typing import List
 from starlette.responses import JSONResponse
-
+import os
 app = FastAPI()
 
 API_KEY = os.getenv("API_KEY")  
