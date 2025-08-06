@@ -15,7 +15,7 @@ model = genai.GenerativeModel('gemini-2.5-pro')
 
 def send_to_gemini(question, text):
     try: 
-        text = question + ". this is the question, answer in one line. and answer from the contents of the following texts - \n " + text
+        text = question + ". this are the question, no question are dependent on each other so the asnwers should not infulence on other answers, answer in one line, so for example 10 question each line one question so 10 lines of answer each answer is one line. give me only the lines of answer . and answer should be form the contents of the following texts. dont generate, take the answer line form the following text with out any changes  - \n " + text
         response = model.generate_content(text)
         if response:
             return response.candidates[0].content.parts[0].text
@@ -63,9 +63,15 @@ def run_endpoint(
             ocr_text = pytesseract.image_to_string(img)
             all_text += ocr_text
 
-    ans = []
+    question = ""
     for i in range(len(request.questions)):
-        ans.append(send_to_gemini(request.questions[i],all_text))
+        question += (request.questions[i]+'\n')
+
+    print(question)
+    ans = send_to_gemini(question, all_text)
+    print(ans)
+    ans = ans.split('\n')
+    print(ans)
 
     return {
         "answers": ans
